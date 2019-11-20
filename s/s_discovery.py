@@ -7,11 +7,12 @@ def UDPServer(localIP, localPort):
     print("Trying to create socket with {} and {}".format(localIP, localPort))
     UDPServerSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     UDPServerSocket.bind((localIP, localPort))
+    print("UDP Server on IP {} is ready.".format(localIP))
     while True:
-        print("UDP Server on IP {} is ready.".format(localIP))
         # Listen for incoming packets and echo back.
         message, address = UDPServerSocket.recvfrom(1024)
         UDPServerSocket.sendto(message, address)
+        print("Received message: {}", message.decode())
 
 if __name__ == "__main__":
     interfaceIPs = {"r1": "10.10.1.1", "r2": "10.10.2.2", "r3": "10.10.3.1"}

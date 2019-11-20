@@ -15,6 +15,8 @@ def UDPClient(serverIP, serverPort):
             UDPClientSocket.recvfrom(1024)
             endTime = int(round(time.time() * 1000))
             totalRTT += endTime - startTime
+            packetsSent += 1
+            print("Sent packet {}. RTT: {}".format(message, endTime-startTime))
     print("Calculated RTT: {}".format(totalRTT/1000))
 
 if __name__ == "__main__":
