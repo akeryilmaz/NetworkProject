@@ -4,7 +4,7 @@ import threading
 
 def UDPServer(localIP, localPort):
     # Create UDP Server socket and bind local IP & port to it.
-    print("Trying to create socket with {} and {}".format(localIP, localPort))
+    #print("Trying to create socket with {} and {}".format(localIP, localPort))
     UDPServerSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     UDPServerSocket.bind((localIP, localPort))
     print("UDP Server on IP {} is ready.".format(localIP))
