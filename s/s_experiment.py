@@ -8,12 +8,12 @@ def UDPClient(serverIP, serverPort, outputName):
     packetsSent = 0
     ETEDs = []
     while packetsSent < 1000:
-        startTime = int(round(time.time() * 1000))
+        startTime = time.time()
 
         UDPClientSocket.sendto(str(startTime).encode(), serverAddressPort)
         message, _ = UDPClientSocket.recvfrom(1024)
 
-        ETED = int(message.decode()) - startTime
+        ETED = 1000*(float(message.decode()) - startTime)
         ETEDs.append(ETED)
         packetsSent += 1
         print("Sent packet {}. ETED: {}".format(message, ETED))
