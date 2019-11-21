@@ -10,9 +10,9 @@ def UDPServer(localIP, localPort):
     while True:
         # Listen for incoming packets and echo back.
         message, address = UDPServerSocket.recvfrom(1024)
-        endTime = int(round(time.time() * 1000))
+        endTime = time.time()
         UDPServerSocket.sendto(str(endTime).encode(), address)
-        print("Received message: {}", message.decode())
+        # print("Received message: ", message.decode(), " Sent message:", endTime, " diff: ", endTime-float(message.decode()))
 
 if __name__ == "__main__":
     UDPServer("10.10.7.1", 4444)

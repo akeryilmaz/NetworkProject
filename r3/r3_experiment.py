@@ -15,7 +15,7 @@ def UDPServer(localIP, localPort, packetQueue_DS, packetQueue_SD):
         packetQueue_SD.put(messageFromS)
         # From the queue, get the feedback packet coming from d.
         messageFromD = packetQueue_DS.get()
-        # Send the feedback packet back to s.
+        # Send the feedback packet back to s
         UDPServerSocket.sendto(messageFromD, address)
 
 
@@ -25,10 +25,10 @@ def UDPClient(remoteIP, remotePort, packetQueue_DS, packetQueue_SD):
     remoteIPPort = (remoteIP, remotePort)
     while True:
         # Get messages from packetQueue one by one and send it to remoteIP, remotePort.
-        messageFromS = packetQueue_SD.Get()
+        messageFromS = packetQueue_SD.get()
         UDPClientSocket.sendto(messageFromS, remoteIPPort)
         # Receive the feedback packet from d.
-        messageFromD = UDPClientSocket.recvfrom(1024)
+        messageFromD = UDPClientSocket.recv(1024)
         # Put it in the queue.
         packetQueue_DS.put(messageFromD)
 
