@@ -36,7 +36,7 @@ def UDPServer(localIP, localPort):
 if __name__ == "__main__":
     destinations = {'s' : "10.10.2.2", 'r1': '10.10.8.1', 'd': "10.10.5.2", 'r3': "10.10.6.2"}
     sources = {'s': "10.10.2.1", 'r1': "10.10.8.2", 'd': "10.10.5.1", 'r3': "10.10.6.1"}
-    # Echo back to r1 & r3 (Server). Send packets to s and d (Client).
+    # Echo back to r1 & r3 as Server threads. Send packets to s and d as Client threads.
     s = threading.Thread(target=UDPClient, args=(destinations['s'], 4444, "s.txt"))
     d = threading.Thread(target=UDPClient, args=(destinations['d'], 4444, "d.txt"))
     r1 = threading.Thread(target=UDPServer, args=(sources['r1'], 4444))
