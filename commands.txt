@@ -1,0 +1,4 @@
+sudo tc qdisc add dev eth3 root netem delay 20ms 5ms distribution normal
+
+sudo service ntp stop
+sudo ntpdate time.google.com
