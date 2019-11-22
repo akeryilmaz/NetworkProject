@@ -34,7 +34,7 @@ if __name__ == "__main__":
     # Start sending to servers on s,r2,d from different client threads.
     threads = []
     for key in destinations.keys():
-        t = threading.Thread(target=UDPClient, args=(destinations[key], 4444, key+".txt"))
+        t = threading.Thread(target=UDPClient, args=(destinations[key], 4444, key+"_link_cost.txt"))
         threads.append(t)
     for t in threads:
         t.start()
