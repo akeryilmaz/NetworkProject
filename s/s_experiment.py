@@ -23,4 +23,4 @@ def UDPClient(serverIP, serverPort, outputName):
             f.write(str(item) + "\n")
 
 if __name__ == "__main__":
-    UDPClient("10.10.3.2", 4444, "End_to_end_delays.txt")
+    UDPClient("10.10.3.2", 4444, "End_to_end_delays2.txt")
