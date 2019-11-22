@@ -6,10 +6,10 @@ Ekin Tire, 2167369
 ----- RTT DISCOVERY -----
 
 For RTT discovery scripts to be run successfully, they must be executed in the following order:
-1. s_discovery
-2. d_discovery
-3. r2_discovery
-4,5. r1_discovery and r3_discovery; interchangeable.
+1. s_discovery.py
+2. d_discovery.py
+3. r2_discovery.py
+4,5. r1_discovery.py and r3_discovery.py; interchangeable.
 
 - The RTT value outputs can be found in the nodes r1,r2 and r3. Output files for the link costs are:
 In r1:

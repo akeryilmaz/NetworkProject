@@ -3,22 +3,29 @@ import time
 import threading
 
 def UDPClient(serverIP, serverPort, outputName):
+    # Server ip and port of s and d.
     serverAddressPort = (serverIP, serverPort)
+    # Create UDP socket to send messages.
     UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     with open("messages_r2.txt", "r") as f:
         packetsSent = 0
         totalRTT = 0
         while packetsSent < 1000:
             message = f.readline()
+            # Time at which the message is sent (miliseconds)
             startTime = int(round(time.time() * 1000))
+            # Send the message
             UDPClientSocket.sendto(message.encode(), serverAddressPort)
+            # Receive the response
             UDPClientSocket.recvfrom(1024)
+            # Time at which the response is received from server (miliseconds)
             endTime = int(round(time.time() * 1000))
             totalRTT += endTime - startTime
             packetsSent += 1
             #print("Sent packet {}. RTT: {}".format(message, endTime-startTime))
 
     with open(outputName, "w") as f:
+        # Average RTT = totalRTT / number of packets
         f.write("Calculated RTT: {}".format(totalRTT/1000))
 
 def UDPServer(localIP, localPort):
